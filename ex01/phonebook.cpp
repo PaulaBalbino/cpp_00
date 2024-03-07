@@ -6,7 +6,7 @@
 /*   By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:28:57 by pbalbino          #+#    #+#             */
-/*   Updated: 2024/03/06 21:47:20 by pbalbino         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:57:27 by pbalbino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
+#include <cctype>
 
 class Contact
 {
@@ -63,6 +64,16 @@ int stringToInt(const std::string &str)
 	int result;
 	iss >> result;
 	return result;
+}
+
+int containsOnlySpaces(const char *str)
+{
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		if (!isspace(str[i]) && str[i] != '\n')
+			return 0;
+	}
+	return 1; // If all characters are spaces or newline, return true
 }
 class PhoneBook
 {
@@ -142,7 +153,8 @@ public:
 		if (is_number(index) && stringToInt(index) < (indexmax % 8))
 			printDetailedContact(stringToInt(index));
 		else
-			std::cout << std::string("INVALID OPTION") << std::endl;;
+			std::cout << std::string("INVALID OPTION") << std::endl;
+		;
 	}
 };
 
@@ -150,7 +162,7 @@ Contact ft_add(void)
 {
 	Contact person;
 
-	while (person.firstName.empty())
+	while (person.firstName.empty() || containsOnlySpaces(person.firstName.c_str()) == 1)
 	{
 		std::cout << "Please enter the first name: " << std::endl;
 		std::getline(std::cin, person.firstName);
@@ -197,7 +209,13 @@ int main()
 		std::cout << "Please enter ADD to save a new contact" << std::endl;
 		std::cout << "Please enter SEARCH to display a specific contact" << std::endl;
 		std::cout << "Please enter EXIT to display a specific contact" << std::endl;
-		std::getline(std::cin, input);
+
+		if (!std::getline(std::cin, input))
+		{
+			// handle control-d
+			std::cout << "Exiting program..." << std::endl;
+			break;
+		}
 
 		if (input == "ADD")
 			phoneBook.addContact(ft_add());
@@ -206,7 +224,7 @@ int main()
 			phoneBook.search();
 
 		else if (input == "EXIT")
-			return (0);
+			break;
 
 		else
 			std::cout << "INVALID INPUT" << std::endl;

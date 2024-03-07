@@ -6,15 +6,15 @@
 #    By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 10:35:45 by pbalbino          #+#    #+#              #
-#    Updated: 2024/03/07 15:06:07 by pbalbino         ###   ########.fr        #
+#    Updated: 2024/03/07 15:18:26 by pbalbino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= phonebook
 
-CC		= c++
+CXX		= c++
 
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 OBJPATH = ./obj/
 
@@ -28,10 +28,10 @@ $(OBJPATH):
 	mkdir $(OBJPATH)
 
 $(NAME):	$(OBJ)
-	$(CC) $(FLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 $(OBJPATH)%.o: %.cpp
-	$(CC) $(FLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
 	rm -rf $(OBJPATH)

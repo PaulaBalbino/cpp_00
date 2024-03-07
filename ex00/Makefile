@@ -6,15 +6,15 @@
 #    By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 15:20:24 by pbalbino          #+#    #+#              #
-#    Updated: 2024/03/07 15:05:33 by pbalbino         ###   ########.fr        #
+#    Updated: 2024/03/07 15:18:13 by pbalbino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= megaphone
 
-CC		= c++
+CXX		= c++
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 OBJPATH = ./obj/
 
@@ -28,10 +28,10 @@ $(OBJPATH):
 	mkdir $(OBJPATH)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 $(OBJPATH)%.o: %.cpp
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
 	rm -rf $(OBJPATH)
