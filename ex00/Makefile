@@ -6,7 +6,7 @@
 #    By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 15:20:24 by pbalbino          #+#    #+#              #
-#    Updated: 2024/02/29 16:02:18 by pbalbino         ###   ########.fr        #
+#    Updated: 2024/03/07 15:05:33 by pbalbino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ $(NAME):	$(OBJ)
 $(OBJPATH)%.o: %.cpp
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-clean: rm -rf $(OBJPATH)
+clean:
+	rm -rf $(OBJPATH)
 
 fclean:		clean
 	rm -rf $(NAME)
