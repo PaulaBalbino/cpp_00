@@ -6,7 +6,7 @@
 /*   By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:28:57 by pbalbino          #+#    #+#             */
-/*   Updated: 2024/03/08 17:15:16 by pbalbino         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:24:56 by pbalbino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,55 @@ Contact ft_add(void)
 {
 	Contact person;
 
-	while (person.firstName.empty() ||
-			Utils::containsOnlySpaces(person.firstName.c_str()) == 1)
+	std::string firstNameRaw;
+	std::string lastNameRaw;
+	std::string nicknameRaw;
+	std::string phoneNumberRaw;
+	std::string darkestSecretRaw;
+
+	while (person.getFirstName().empty() ||
+			Utils::containsOnlySpaces(person.getFirstName()) == 1)
 	{
 		std::cout << "Please enter the first name: " << std::endl;
-		std::getline(std::cin, person.firstName);
+		std::getline(std::cin, firstNameRaw);
+		person.setFirstName(firstNameRaw);
 	}
 
-	std::string lastName;
-	while (person.lastName.empty())
+	while (person.getLastName().empty() ||
+		Utils::containsOnlySpaces(person.getLastName()) == 1)
 	{
 		std::cout << "Please enter the last name: " << std::endl;
-		std::getline(std::cin, person.lastName);
+		std::getline(std::cin,lastNameRaw);
+		person.setLastName(lastNameRaw);
 	}
 
-	std::string nickname;
-	while (person.nickname.empty())
+	while (person.getNickname().empty() ||
+		Utils::containsOnlySpaces(person.getNickname()) == 1)
 	{
 		std::cout << "Please enter the nickname: " << std::endl;
-		std::getline(std::cin, person.nickname);
+		std::getline(std::cin, nicknameRaw);
+		person.setNickname(nicknameRaw);
 	}
 
-	while (person.phoneNumber.empty() ||
-		Utils::is_number(person.phoneNumber) == false)
+	while (person.getPhoneNumber().empty() ||
+		Utils::is_number(person.getPhoneNumber()) == false)
 	{
 		std::cout << "Please enter the phone number (only numbers): " << std::endl;
-		std::getline(std::cin, person.phoneNumber);
+		std::getline(std::cin,phoneNumberRaw);
 
-		if (Utils::is_number(person.phoneNumber) == false)
+		if (Utils::is_number(phoneNumberRaw) == false)
 			std::cout << "Phone Number contains non digit numbers" << std::endl;
+		else
+			person.setPhoneNumber(phoneNumberRaw);
 	}
 
 	std::string darkestSecret;
-	while (person.darkestSecret.empty())
+	while (person.getDarkestSecret().empty() ||
+		Utils::containsOnlySpaces(person.getDarkestSecret()) == 1)
 	{
 		std::cout << "Write the darkest secret of the contact:" << std::endl;
-		std::getline(std::cin, person.darkestSecret);
+		std::getline(std::cin, darkestSecretRaw);
+		person.setDarkestSecret(darkestSecretRaw);
 	}
 	return (person);
 }
@@ -69,9 +82,8 @@ int main()
 		std::cout << "Please enter SEARCH to display a specific contact" << std::endl;
 		std::cout << "Please enter EXIT to display a specific contact" << std::endl;
 
-		if (!std::getline(std::cin, input))
+		if (!std::getline(std::cin, input)) // handle control-d
 		{
-			// handle control-d
 			std::cout << "Exiting program..." << std::endl;
 			break;
 		}
@@ -104,13 +116,5 @@ Isso Ã© comumente usado para alinhar colunas ao imprimir tabelas ou formatar saÃ
 organizada.
 
 
-SHOULD I USE std::cin.ignore(); // Ignore the newline character left in the input buffer ???
-
 */
 
-/*
-Criar um PhoneBook com 8 contatos, ao criar o nono, o primeiro eh subscrito;
-- alocacao dinamica nao e permitida;
-- criar Contact cla
-
-*/

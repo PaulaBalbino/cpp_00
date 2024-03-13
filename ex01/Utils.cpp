@@ -6,7 +6,7 @@
 /*   By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:00:55 by pbalbino          #+#    #+#             */
-/*   Updated: 2024/03/08 17:13:03 by pbalbino         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:23:43 by pbalbino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int Utils::stringToInt(const std::string &str)
 	return result;
 }
 
-int Utils::containsOnlySpaces(const char *str)
+int Utils::containsOnlySpaces(const std::string str)
 {
-	for (int i = 0; str[i] != '\0'; i++)
-	{
-		if (!isspace(str[i]) && str[i] != '\n')
-			return 0;
+	for (size_t i = 0; i < str.length(); ++i) {
+		if (str[i] != ' ') {
+			return (0);
+		}
 	}
-	return 1;
+	return (1);
 }
 
 /*

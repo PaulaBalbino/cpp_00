@@ -6,7 +6,7 @@
 /*   By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:11:40 by pbalbino          #+#    #+#             */
-/*   Updated: 2024/02/29 15:18:15 by pbalbino         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:25:08 by pbalbino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int main (int ac, char **av)
 			ac--;
 			j = 0;
 		}
-
 	}
 	std::cout << std::endl;
 	return (0);

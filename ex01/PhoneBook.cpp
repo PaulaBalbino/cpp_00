@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbalbino <pbalbino@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:39:20 by pbalbino          #+#    #+#             */
-/*   Updated: 2024/03/08 17:12:00 by pbalbino         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:08:15 by pbalbino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 
 	void PhoneBook::printDetailedContact(int i)
 	{
-		std::cout << "First Name: " << arrayOfContacs[i].firstName << std::endl
-				  << "Last Name: " << arrayOfContacs[i].lastName << std::endl
-				  << "Nickame: " << arrayOfContacs[i].nickname << std::endl
-				  << "Phone: " << arrayOfContacs[i].phoneNumber << std::endl
-				  << "Darkest Secret: " << arrayOfContacs[i].darkestSecret << std::endl;
+		arrayOfContacs[i].printDetails();
 	}
 
 	void PhoneBook::addContact(Contact contact)
